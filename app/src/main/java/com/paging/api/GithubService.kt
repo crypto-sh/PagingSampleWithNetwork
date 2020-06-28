@@ -41,10 +41,8 @@ interface GithubService {
 
         }
     }
-
-
-
 }
+
 
 private const val IN_QUALIFIER = "in:name,description"
 
@@ -54,9 +52,8 @@ fun searchRepos(
     query           : String,
     page            : Int,
     itemsPerPage    : Int,
-    onError : (error : String) -> Unit,
-    onSuccess : (repos : List<RepoSearch>) -> Unit
-                ){
+    onError         : (error : String) -> Unit,
+    onSuccess       : (repos : List<RepoSearch>) -> Unit) {
     val apiQuery = query + IN_QUALIFIER
 
     service.searchRepos(apiQuery,page,itemsPerPage).enqueue(object : Callback<RepoSearchResponse> {
